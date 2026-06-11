@@ -47,9 +47,23 @@ function VideoThumbnail({ youtubeId, brand, poster }) {
   )
 }
 
-function VideoCard({ brand, type, youtubeId, poster, isPlaying, onPlay }) {
-  const isAvailable = Boolean(youtubeId)
+function PlaceholderCard() {
+  return (
+    <div className="flex aspect-[9/16] w-full flex-col items-center justify-center gap-6 overflow-hidden rounded-2xl border border-zinc-800 bg-gradient-to-b from-zinc-800/50 via-zinc-900 to-[#111111] p-6 text-center transition-all duration-300 hover:border-[#3B82F6]/60 hover:shadow-[0_0_30px_rgba(59,130,246,0.15)]">
+      <p className="text-lg font-semibold leading-snug text-white sm:text-xl">
+        This could be you
+      </p>
+      <a
+        href="#contact"
+        className="rounded-full bg-[#3B82F6] px-6 py-3 text-sm font-semibold text-white transition-all hover:bg-[#2563EB] hover:shadow-[0_0_20px_rgba(59,130,246,0.4)]"
+      >
+        Work With Me
+      </a>
+    </div>
+  )
+}
 
+function VideoCard({ brand, type, youtubeId, poster, isPlaying, onPlay }) {
   return (
     <div
       className={`group relative aspect-[9/16] w-full overflow-hidden rounded-2xl border bg-[#111111] transition-all duration-300 ${
@@ -78,7 +92,7 @@ function VideoCard({ brand, type, youtubeId, poster, isPlaying, onPlay }) {
             </svg>
           </button>
         </>
-      ) : isAvailable ? (
+      ) : (
         <button
           type="button"
           className="absolute inset-0 w-full cursor-pointer"
@@ -94,28 +108,14 @@ function VideoCard({ brand, type, youtubeId, poster, isPlaying, onPlay }) {
             </div>
           </div>
         </button>
-      ) : (
-        <div className="absolute inset-0 flex flex-col items-center justify-center bg-gradient-to-b from-zinc-800/40 via-zinc-900 to-black p-6 text-center">
-          <p className="text-lg font-semibold leading-snug text-white sm:text-xl">
-            This could be you
-          </p>
-          <a
-            href="#contact"
-            className="mt-6 rounded-full bg-[#3B82F6] px-5 py-2.5 text-sm font-semibold text-white transition-all hover:bg-[#2563EB] hover:shadow-[0_0_20px_rgba(59,130,246,0.4)]"
-          >
-            Work With Me
-          </a>
-        </div>
       )}
 
-      {isAvailable && (
-        <div className="pointer-events-none absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/90 to-transparent p-4 pt-10">
-          <p className="text-sm font-semibold text-white">{brand}</p>
-          <p className="mt-0.5 text-xs font-medium uppercase tracking-wider text-zinc-500">
-            {type}
-          </p>
-        </div>
-      )}
+      <div className="pointer-events-none absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/90 to-transparent p-4 pt-10">
+        <p className="text-sm font-semibold text-white">{brand}</p>
+        <p className="mt-0.5 text-xs font-medium uppercase tracking-wider text-zinc-500">
+          {type}
+        </p>
+      </div>
     </div>
   )
 }
@@ -127,14 +127,18 @@ function CategorySection({ label, videos, activeVideoId, onPlay }) {
         {label}
       </h3>
       <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
-        {videos.map((video, index) => (
-          <VideoCard
-            key={`${label}-${video.brand}-${index}`}
-            {...video}
-            isPlaying={activeVideoId === video.youtubeId}
-            onPlay={onPlay}
-          />
-        ))}
+        {videos.map((video, index) =>
+          video.placeholder ? (
+            <PlaceholderCard key={`${label}-placeholder-${index}`} />
+          ) : (
+            <VideoCard
+              key={`${label}-${video.brand}-${index}`}
+              {...video}
+              isPlaying={activeVideoId === video.youtubeId}
+              onPlay={onPlay}
+            />
+          ),
+        )}
       </div>
     </div>
   )
@@ -159,15 +163,15 @@ const categories = [
         poster: leeSportsPoster,
       },
       { brand: 'MenuFit', type: 'Testimonial', youtubeId: '1HLg5W1CPFA' },
-      { brand: 'Best Beard Stuff', type: 'Coming Soon', youtubeId: null },
+      { placeholder: true },
     ],
   },
   {
     label: "Men's Lifestyle",
     videos: [
       { brand: 'Calvin Klein (DEMO)', type: 'Testimonial', youtubeId: 'ylbC3GnBvbs' },
-      { brand: 'Coming Soon', type: '—', youtubeId: null },
-      { brand: 'Coming Soon', type: '—', youtubeId: null },
+      { placeholder: true },
+      { placeholder: true },
     ],
   },
 ]
