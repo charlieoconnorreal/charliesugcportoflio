@@ -29,7 +29,7 @@ export default function Hero() {
 
       <div className="relative mx-auto w-full max-w-none px-3 sm:px-5 lg:px-8 xl:px-10">
         <div className="grid items-center gap-16 lg:grid-cols-[1fr_auto] lg:justify-between lg:gap-12 xl:gap-20">
-          <div>
+          <div className="text-center lg:text-left">
             <h1 className="text-[2.75rem] font-extrabold leading-[0.92] tracking-[-0.04em] text-white sm:text-6xl md:text-7xl lg:text-[5.25rem] xl:text-[6rem]">
               <span className="block">I Make High-</span>
               <span className="block text-[#c4b5fd]">Converting Ads</span>
@@ -37,12 +37,12 @@ export default function Hero() {
               <span className="block">Ads.</span>
             </h1>
 
-            <p className="mt-10 max-w-xl text-base leading-relaxed text-zinc-400 sm:mt-12 sm:text-lg">
+            <p className="mx-auto mt-10 max-w-xl text-base leading-relaxed text-zinc-400 sm:mt-12 sm:text-lg lg:mx-0">
               UGC creator producing optimized content that drives attention and
               converts to sales.
             </p>
 
-            <div className="mt-12 flex flex-wrap gap-4 sm:mt-14">
+            <div className="mt-12 flex flex-wrap justify-center gap-4 sm:mt-14 lg:justify-start">
               <a
                 href="#work"
                 className="rounded-full bg-[#3B82F6] px-6 py-3 text-sm font-semibold text-white transition-all hover:bg-[#2563EB] hover:shadow-[0_0_24px_rgba(59,130,246,0.45)]"
@@ -58,7 +58,7 @@ export default function Hero() {
             </div>
           </div>
 
-          <div className="flex w-52 flex-col items-center sm:w-60 md:w-72 lg:ml-auto">
+          <div className="mx-auto flex w-52 flex-col items-center sm:w-60 md:w-72 lg:mx-0 lg:ml-auto">
             <div className="relative w-full">
               <div className="absolute inset-0 rounded-full bg-[#7c5cbf]/30 blur-2xl" />
               <div className="relative mx-auto w-fit rounded-full p-1 ring-2 ring-[#9b7ed8]/50 ring-offset-4 ring-offset-[#080808]">

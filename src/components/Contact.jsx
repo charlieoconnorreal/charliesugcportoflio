@@ -8,7 +8,7 @@ export default function Contact() {
     <section
       id="contact"
       ref={ref}
-      className={`bg-[#0a0a0a] py-20 md:py-28 ${isVisible ? 'animate-fade-in-up' : 'opacity-0'}`}
+      className={`bg-[#0a0a0a] py-20 md:py-28 ${isVisible ? 'animate-fade-in-up' : ''}`}
     >
       <div className="mx-auto w-full max-w-none px-3 text-center sm:px-5 lg:px-8 xl:px-10">
         <h2 className="text-3xl font-bold tracking-tight text-white sm:text-4xl">

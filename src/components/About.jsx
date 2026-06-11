@@ -8,7 +8,7 @@ export default function About() {
     <section
       id="about"
       ref={ref}
-      className={`bg-[#111111] py-20 md:py-28 ${isVisible ? 'animate-fade-in-up' : 'opacity-0'}`}
+      className={`bg-[#111111] py-20 md:py-28 ${isVisible ? 'animate-fade-in-up' : ''}`}
     >
       <div className="mx-auto w-full max-w-none px-3 sm:px-5 lg:px-8 xl:px-10">
         <h2 className="text-3xl font-bold tracking-tight text-white sm:text-4xl">

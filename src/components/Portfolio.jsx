@@ -184,7 +184,7 @@ export default function Portfolio() {
     <section
       id="work"
       ref={ref}
-      className={`bg-[#111111] py-20 md:py-28 ${isVisible ? 'animate-fade-in-up' : 'opacity-0'}`}
+      className={`bg-[#111111] py-20 md:py-28 ${isVisible ? 'animate-fade-in-up' : ''}`}
     >
       <div className="mx-auto w-full max-w-none px-3 sm:px-5 lg:px-8 xl:px-10">
         <div className="max-w-2xl">
