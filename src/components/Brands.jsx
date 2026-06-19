@@ -10,6 +10,21 @@ import airlearnLogo from '../assets/brands/airlearn.png'
 import parakeetAiLogo from '../assets/brands/parakeet-ai.png'
 import merakiMedicinalLogo from '../assets/brands/meraki-medicinal.png'
 import dotLogo from '../assets/brands/dot.png'
+import eromifyLogo from '../assets/brands/eromify.png'
+import sendCoLogo from '../assets/brands/send-co.png'
+import wronAiLogo from '../assets/brands/wron-ai.png'
+import odysseyLogo from '../assets/brands/odyssey.png'
+import spanLogo from '../assets/brands/span.png'
+import lullabitesLogo from '../assets/brands/lullabites.png'
+import freeTheSheepLogo from '../assets/brands/free-the-sheep.png'
+import magnaLogo from '../assets/brands/magna.png'
+import lassoLogo from '../assets/brands/lasso.png'
+import vitalSourceNutritionLogo from '../assets/brands/vital-source-nutrition.png'
+import magicMindLogo from '../assets/brands/magic-mind.png'
+import strongCoffeeCompanyLogo from '../assets/brands/strong-coffee-company.png'
+import hearsLogo from '../assets/brands/hears.png'
+import havenLogo from '../assets/brands/haven.png'
+import ambrosiaCollectiveLogo from '../assets/brands/ambrosia-collective.png'
 
 const brands = [
   { name: 'Cheaterbuster', logo: cheaterbusterLogo },
@@ -23,6 +38,21 @@ const brands = [
   { name: 'Parakeet.AI', logo: parakeetAiLogo },
   { name: 'Meraki Medicinal', logo: merakiMedicinalLogo },
   { name: 'Dot', logo: dotLogo },
+  { name: 'Eromify', logo: eromifyLogo },
+  { name: 'Send.co', logo: sendCoLogo },
+  { name: 'Wron.AI', logo: wronAiLogo },
+  { name: 'Odyssey', logo: odysseyLogo },
+  { name: 'SPAN', logo: spanLogo },
+  { name: 'LullaBites', logo: lullabitesLogo },
+  { name: 'Free the Sheep', logo: freeTheSheepLogo },
+  { name: 'Magna', logo: magnaLogo },
+  { name: 'LASSO', logo: lassoLogo },
+  { name: 'Vital Source Nutrition', logo: vitalSourceNutritionLogo },
+  { name: 'Magic Mind', logo: magicMindLogo },
+  { name: 'Strong Coffee Company', logo: strongCoffeeCompanyLogo },
+  { name: 'Hears', logo: hearsLogo },
+  { name: 'Haven', logo: havenLogo },
+  { name: 'Ambrosia Collective', logo: ambrosiaCollectiveLogo },
 ]
 
 function interleaveBrands(list) {

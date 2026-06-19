@@ -151,6 +151,9 @@ const categories = [
       { brand: 'Cheaterbuster', type: 'Skit', youtubeId: 'SJM7rMzOLKY' },
       { brand: 'Erly', type: 'Product demo', youtubeId: '42KjrnETXDc' },
       { brand: 'BibleWatch', type: 'Testimonial', youtubeId: 'I2G-8ZeSYIg' },
+      { brand: 'Odyssey', type: 'Skit', youtubeId: 'zWan0bzJacc' },
+      { brand: 'Wron.AI', type: 'Product Demo', youtubeId: '9vaxG6G4OhU' },
+      { brand: 'Send.co', type: 'Product Demo', youtubeId: 'nKTFc_veRGI' },
     ],
   },
   {
