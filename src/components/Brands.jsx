@@ -55,22 +55,16 @@ const brands = [
   { name: 'Ambrosia Collective', logo: ambrosiaCollectiveLogo },
 ]
 
-function interleaveBrands(list) {
-  const midpoint = Math.ceil(list.length / 2)
-  const firstHalf = list.slice(0, midpoint)
-  const secondHalf = list.slice(midpoint)
-  const interleaved = []
-
-  for (let i = 0; i < Math.max(firstHalf.length, secondHalf.length); i += 1) {
-    if (secondHalf[i]) interleaved.push(secondHalf[i])
-    if (firstHalf[i]) interleaved.push(firstHalf[i])
-  }
-
-  return interleaved
+function rotateBrands(list, offset) {
+  return [...list.slice(offset), ...list.slice(0, offset)]
 }
 
-const brandsRowTop = brands
-const brandsRowBottom = interleaveBrands(brands)
+// Split brands across rows so the same brand never appears on both rows at once.
+// Each row only duplicates its own subset; with 13 brands per row, the viewport
+// is never wide enough to show a brand and its loop copy simultaneously.
+const midpoint = Math.ceil(brands.length / 2)
+const brandsRowTop = brands.slice(0, midpoint)
+const brandsRowBottom = rotateBrands(brands.slice(midpoint), Math.floor(midpoint / 2))
 
 function BrandCard({ name, logo }) {
   return (
@@ -86,6 +80,8 @@ function BrandCard({ name, logo }) {
 }
 
 function MarqueeRow({ direction = 'left', items, staggered = false }) {
+  const loopItems = [...items, ...items]
+
   return (
     <div className={`overflow-hidden ${staggered ? 'marquee-row-stagger' : ''}`}>
       <div
@@ -94,13 +90,8 @@ function MarqueeRow({ direction = 'left', items, staggered = false }) {
         } ${staggered ? 'marquee-track-offset' : ''}`}
       >
         <div className="flex shrink-0 gap-6">
-          {items.map((brand) => (
-            <BrandCard key={brand.name} {...brand} />
-          ))}
-        </div>
-        <div className="flex shrink-0 gap-6" aria-hidden="true">
-          {items.map((brand) => (
-            <BrandCard key={`${brand.name}-dup`} {...brand} />
+          {loopItems.map((brand, index) => (
+            <BrandCard key={`${brand.name}-${index}`} {...brand} />
           ))}
         </div>
       </div>
