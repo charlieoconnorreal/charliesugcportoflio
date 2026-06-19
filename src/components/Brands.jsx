@@ -55,16 +55,10 @@ const brands = [
   { name: 'Ambrosia Collective', logo: ambrosiaCollectiveLogo },
 ]
 
-function rotateBrands(list, offset) {
-  return [...list.slice(offset), ...list.slice(0, offset)]
-}
-
-// Split brands across rows so the same brand never appears on both rows at once.
-// Each row only duplicates its own subset; with 13 brands per row, the viewport
-// is never wide enough to show a brand and its loop copy simultaneously.
+// Disjoint halves: a brand can only ever appear on one row.
 const midpoint = Math.ceil(brands.length / 2)
 const brandsRowTop = brands.slice(0, midpoint)
-const brandsRowBottom = rotateBrands(brands.slice(midpoint), Math.floor(midpoint / 2))
+const brandsRowBottom = brands.slice(midpoint)
 
 function BrandCard({ name, logo }) {
   return (
@@ -80,8 +74,6 @@ function BrandCard({ name, logo }) {
 }
 
 function MarqueeRow({ direction = 'left', items, staggered = false }) {
-  const loopItems = [...items, ...items]
-
   return (
     <div className={`overflow-hidden ${staggered ? 'marquee-row-stagger' : ''}`}>
       <div
@@ -89,9 +81,14 @@ function MarqueeRow({ direction = 'left', items, staggered = false }) {
           direction === 'right' ? 'marquee-track-reverse' : ''
         } ${staggered ? 'marquee-track-offset' : ''}`}
       >
-        <div className="flex shrink-0 gap-6">
-          {loopItems.map((brand, index) => (
-            <BrandCard key={`${brand.name}-${index}`} {...brand} />
+        <div className="flex shrink-0 gap-6" aria-hidden="false">
+          {items.map((brand) => (
+            <BrandCard key={brand.name} {...brand} />
+          ))}
+        </div>
+        <div className="flex shrink-0 gap-6 pl-6" aria-hidden="true">
+          {items.map((brand) => (
+            <BrandCard key={`${brand.name}-loop`} {...brand} />
           ))}
         </div>
       </div>
