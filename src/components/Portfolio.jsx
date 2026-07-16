@@ -1,6 +1,5 @@
 import { useState } from 'react'
 import { useScrollAnimation } from '../hooks/useScrollAnimation'
-import leeSportsPoster from '../assets/posters/lee-sports.jpg'
 
 const THUMBNAIL_QUALITIES = [
   'oardefault',
@@ -47,22 +46,6 @@ function VideoThumbnail({ youtubeId, brand, poster }) {
   )
 }
 
-function PlaceholderCard() {
-  return (
-    <div className="flex aspect-[9/16] w-full flex-col items-center justify-center gap-6 overflow-hidden rounded-2xl border border-zinc-800 bg-gradient-to-b from-zinc-800/50 via-zinc-900 to-[#111111] p-6 text-center transition-all duration-300 hover:border-[#3B82F6]/60 hover:shadow-[0_0_30px_rgba(59,130,246,0.15)]">
-      <p className="text-lg font-semibold leading-snug text-white sm:text-xl">
-        This could be you
-      </p>
-      <a
-        href="#contact"
-        className="rounded-full bg-[#3B82F6] px-6 py-3 text-sm font-semibold text-white transition-all hover:bg-[#2563EB] hover:shadow-[0_0_20px_rgba(59,130,246,0.4)]"
-      >
-        Work With Me
-      </a>
-    </div>
-  )
-}
-
 function VideoCard({ brand, type, youtubeId, poster, isPlaying, onPlay }) {
   return (
     <div
@@ -76,7 +59,7 @@ function VideoCard({ brand, type, youtubeId, poster, isPlaying, onPlay }) {
         <>
           <iframe
             src={`https://www.youtube.com/embed/${youtubeId}?autoplay=1&rel=0`}
-            title={`${brand} — ${type}`}
+            title={`${brand} - ${type}`}
             className="absolute inset-0 h-full w-full"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
             allowFullScreen
@@ -127,18 +110,14 @@ function CategorySection({ label, videos, activeVideoId, onPlay }) {
         {label}
       </h3>
       <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
-        {videos.map((video, index) =>
-          video.placeholder ? (
-            <PlaceholderCard key={`${label}-placeholder-${index}`} />
-          ) : (
-            <VideoCard
-              key={`${label}-${video.brand}-${index}`}
-              {...video}
-              isPlaying={activeVideoId === video.youtubeId}
-              onPlay={onPlay}
-            />
-          ),
-        )}
+        {videos.map((video, index) => (
+          <VideoCard
+            key={`${label}-${video.brand}-${index}`}
+            {...video}
+            isPlaying={activeVideoId === video.youtubeId}
+            onPlay={onPlay}
+          />
+        ))}
       </div>
     </div>
   )
@@ -148,33 +127,28 @@ const categories = [
   {
     label: 'Tech',
     videos: [
+      { brand: 'Speechify', type: 'Product Demo', youtubeId: 'k66nx4mpyyQ' },
+      { brand: 'FOMO', type: 'Testimonial', youtubeId: 'EME1haDD7DU' },
       { brand: 'Cheaterbuster', type: 'Skit', youtubeId: 'SJM7rMzOLKY' },
-      { brand: 'Erly', type: 'Product demo', youtubeId: '42KjrnETXDc' },
-      { brand: 'BibleWatch', type: 'Testimonial', youtubeId: 'I2G-8ZeSYIg' },
-      { brand: 'Odyssey', type: 'Skit', youtubeId: 'zWan0bzJacc' },
       { brand: 'Wron.AI', type: 'Product Demo', youtubeId: '9vaxG6G4OhU' },
-      { brand: 'Send.co', type: 'Product Demo', youtubeId: 'nKTFc_veRGI' },
+      { brand: 'Erly', type: 'Product demo', youtubeId: '42KjrnETXDc' },
+      { brand: 'Euphoria', type: 'Skit', youtubeId: 'y1WaE9qHKWc' },
     ],
   },
   {
     label: 'Health & Fitness',
     videos: [
-      {
-        brand: 'Lee-sports (DEMO)',
-        type: 'Testimonial',
-        youtubeId: '4M67J6EkisE',
-        poster: leeSportsPoster,
-      },
-      { brand: 'MenuFit', type: 'Testimonial', youtubeId: '1HLg5W1CPFA' },
-      { placeholder: true },
+      { brand: 'RUNNR Activewear', type: 'Testimonial', youtubeId: 'BdxqQ8NHn0Y' },
+      { brand: 'MenuFit', type: 'Testimonial', youtubeId: '1raiRV3aaxU' },
+      { brand: 'Ambrosia Collective', type: 'Testimonial', youtubeId: 'NSzBX8KUyXA' },
     ],
   },
   {
     label: "Men's Lifestyle",
     videos: [
-      { brand: 'Calvin Klein (DEMO)', type: 'Testimonial', youtubeId: 'ylbC3GnBvbs' },
-      { placeholder: true },
-      { placeholder: true },
+      { brand: 'QOVES', type: 'Testimonial', youtubeId: 'blLxLyZEyao' },
+      { brand: 'Magic Mind', type: 'Testimonial', youtubeId: 'F7JOzX6K_uw' },
+      { brand: 'Sun Powder', type: 'Testimonial', youtubeId: 'SXtMtmQrM5k' },
     ],
   },
 ]

@@ -29,35 +29,44 @@ body {
 
 @keyframes marquee {
   from {
-    transform: translateX(0);
+    transform: translate3d(0, 0, 0);
   }
   to {
-    transform: translateX(-50%);
+    transform: translate3d(-50%, 0, 0);
+  }
+}
+
+@keyframes marquee-reverse {
+  from {
+    transform: translate3d(-50%, 0, 0);
+  }
+  to {
+    transform: translate3d(0, 0, 0);
   }
 }
 
 .marquee-track {
-  animation: marquee 30s linear infinite;
+  animation: marquee 50s linear infinite;
+  will-change: transform;
+  backface-visibility: hidden;
 }
 
 .marquee-track-reverse {
-  animation-direction: reverse;
-}
-
-.marquee-track-offset {
-  animation-delay: -15s;
+  animation-name: marquee-reverse;
 }
 
 .marquee-row-stagger {
-  padding-left: 10rem;
+  padding-left: 8rem;
 }
 
 @media (min-width: 640px) {
   .marquee-row-stagger {
-    padding-left: 14rem;
+    padding-left: 12rem;
   }
 }
 
-.brands-marquee:hover .marquee-track {
-  animation-play-state: paused;
+@media (prefers-reduced-motion: reduce) {
+  .marquee-track {
+    animation: none;
+  }
 }

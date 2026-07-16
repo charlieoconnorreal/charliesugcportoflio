@@ -26,14 +26,14 @@ export default function About() {
 
           <div>
             <p className="text-base leading-8 text-zinc-300 sm:text-lg sm:leading-9">
-              I&apos;m Charlie O&apos;Connor, based in Switzerland. Before becoming a
+              I&apos;m Charlie O&apos;Connor, British and Swiss. Before becoming a
               UGC creator, I served in the special forces and competed professionally
-              in Muay Thai — two worlds that taught me discipline, precision, and how
+              in Muay Thai. Those two worlds taught me discipline, precision, and how
               to perform under pressure. I&apos;ve also founded and marketed my own SaaS
               product, CardHive.ch, which gave me a deep understanding of what
               actually makes content convert. I&apos;ve loved creating since I was a
               child, and now I channel that into content that doesn&apos;t just look
-              good — it drives results.
+              good. It drives results.
             </p>
           </div>
         </div>
